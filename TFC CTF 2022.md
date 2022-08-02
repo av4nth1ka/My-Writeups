@@ -33,8 +33,29 @@ So, when we visit the above directory,<br>
 When we open the apple-app-site-association file we get the flag there in the path field.<br>
 Flag: TFCCTF{4appl3_4pp_5lt3_4550c14t10n}<br>
 
-# 3. 
+# 3. CALENDER
 
+## Challenge Description:
+Are online calenders trust worthy??
+Flag format: TFCCTF{foundpassword}
+
+# Solution:
++ Word press challenge<br>
++ reference: https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/wordpress<br>
++ When we get a wordpress challenge, first we need to look for default directories.<br>
++ So, we tried looking for `/wp-includes`, `/wp-contents`,`wp-json/wp/v2/users/`. All these dircetories were forbidden.<br>
++ lets look at `/wp-admin/`, this is where we login for the wordpress site.<br>
++ When we try entering the username and password, it says password incorrect. So, as we know the purpose of the challenge is to find the password.<br>
++ So, while looking at the source code of the challenge we can see a `/wp-scan/plugins/` named modern-events-calender-lite.<br>
++ So, when we search for the exploit for `modern-events-calender-lite`, we get the following reference:<br>
+https://www.exploit-db.com/exploits/50084<br>
++ So, we can see an exploit url as `http://' + target_ip + ':' + target_port + wp_path + '/wp-admin/admin.php?page=MEC-ix&tab=MEC-export&mec-ix-action=export-events&format=csv`<br>
++ So, for this challenge,<br>
+`01.linux.challenges.ctf.thefewchosen.com:54423/wp-admin/admin.php?page=MEC-ix&tab=MEC-export&mec-ix-action=export-events&format=csv` this url gives the password for the admin username which is what we want.<br>
+Flag: TFCCTF{WPNe3MgF$sNj8E8F6d}
+
+
+# 4. DIAMONDS
 
 
 
