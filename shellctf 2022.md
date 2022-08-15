@@ -58,6 +58,36 @@ Solution:
  + So, here we got the flag!
   
   
+ # 3. Colour cookie
+  
+ Challenge description:
+  Gone those days when no colours, images, fonts use to be on a webpage. We now have various ways to decorate our webpages and here is one such example.
+  
+link: http://20.125.142.38:8326/
+ Solution:
+ + When we give something in the name field, for example i gave name=ram, then the url becomes: /check?name=ram
+ + When we see the title, we may think whether the challenge is about cookies, but we cant see any cookies tho!
+ + Looking into the source code, there is a file named `base_cookies.css`. When we go into that file and scroll till the end, we can see this comment,/*   name="C0loR"  */
+ + So, i tried giving 'C0loR' in the name field, nothing happened.
+ + Then i changed the name parameter in the url to C0loR and gave the value as blue, as it is given as 'blue is my favourite color'.
+ + There you got the flag: shellctf{C0ooooK13_W17h_c0ooorr3c7_Parr4m37er...}
+  
+ 
+ # 4. Illusion
+  
+Challenge discription: Sometimes it happens things are there but you can't see it directly. We need to change our vision to make it visible. I believe you have that vision.
+link: http://20.125.142.38:8765/
+  
+ Solution:
+ + Tried command injection, and lfi payloads nothing worked,
+ + When we give cd;, we can see only the ; wll be given as output.
+ + when i did, ccdd ;, it gave the output as cd ;. So, the application uses some kind of filters to avoid the common commands.
+ + lets try: `ccdd ....;cat flag.txt;` still didnt worked.
+ + lets try: `ccdd ....;ccdd ....;cat flag.txt;`, it worked!!
+  flag: shellctf{F1l73R5_C4n'T_Pr3v3N7_C0mM4nd_1nJeC71on}
+  
+  
+  
 
   
 
