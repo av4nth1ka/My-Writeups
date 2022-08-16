@@ -229,14 +229,14 @@ if __name__ == "__main__":
 + important to read about unicode: https://stackoverflow.com/questions/42887533/why-is-this-turkish-character-being-corrupted-when-i-lowercase-it
 + So, we know the username is 'admin' but while passing the username in burp we dont get anything, so we need to check whether there is any unicode character in the word admin or ADMIN
 + The following script will help us with that:
-    ```
+```
 for i in range(1000):
     c = chr(i)
     if (c.upper() in 'ADMIN' and not c.lower() in 'admin'):
         print('nai it here:',i,c)
         break
     print(i,c)
- ```
+```
  + The above code gives the following output:
    nai it here: 305 ı
  + So, instead of 'i' we need to pass this character 'ı'. The url encoded form of this character is : %C4%B1
