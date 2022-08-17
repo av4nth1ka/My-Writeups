@@ -248,4 +248,6 @@ for i in range(1000):
 challenge description: Cloning git repositories from web servers might be risky. Can you show me why?
 link: nc 52.59.124.14 10001
 Solution:
+https://ngrok.com/docs/getting-started
+https://github.com/TrixterTheTux/CTF-Writeups/blob/main/nullconctf_2022/web/git_to_the_core.md
                                                        
