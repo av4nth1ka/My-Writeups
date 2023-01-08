@@ -1,2 +1,2 @@
 # My Writeups<br>
-CTF  writeups of web chalenges
+I upload the writeup of all web ctf challenges from ctfs here! ;)
