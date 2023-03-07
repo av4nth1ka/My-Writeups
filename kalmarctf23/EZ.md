@@ -8,3 +8,4 @@
 + Now it will allow to access the served files from different folders/vhosts.
 + Also, if we try to get /flag.txt, it will give forbidden error, to bypass this use /../flag.txt.
 + Flag: `kalmar{th1s-w4s-2x0d4ys-wh3n-C4ddy==2.4}`
++ If you do ../ on the root you still reference the same directory. Much like on linux if you are on the / (root) -> doing cd ../ will not do anything, since it is the same path -> just specifying the root path like this will be just different enoughto bypass the path in 403 caddy directive.
