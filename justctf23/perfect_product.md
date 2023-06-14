@@ -17,5 +17,15 @@ Breaking down the source code:
 const params = req.query || {};
 Object.assign(params, req.body || {});
 ```
-If we include a malicious payload in the request parameters, they can manipulate the `params` objects and modify the prototype
+If we include a malicious payload in the request parameters, they can manipulate the `params` objects and modify the prototype.
+It first initializes the params object with the query parameters (req.query) or an empty object if no query parameters are present. Then, it uses Object.assign() to merge the request body (req.body) with the params object.
+
+```
+ if(!(strings instanceof Array) && !Array.isArray(strings)){
+    strings = ['NaN', 'NaN', 'NaN', 'NaN', 'NaN'];
+  }
+```
++ The purpose of this code snippet seems to ensure that the strings variable is always an Array. If it is not an Array, it initializes it with the default values ['NaN', 'NaN', 'NaN', 'NaN', 'NaN'].
++ From the source code we can understand that the version of ejs is 3.1.9. This version of ejs is vulnerable to server side template injection.<br>
+refer: https://github.com/mde/ejs/issues/735
 
