@@ -23,5 +23,8 @@ Thus we get the flag.
 
 
 
-
-https://hackmd.io/@Solderet/UIUCTF-2023-peanut-xss
+Reference:
++ https://hackmd.io/@Solderet/UIUCTF-2023-peanut-xss
++ https://github.com/ncase/nutshell
++ https://ncase.me/nutshell/
++ https://gchq.github.io/CyberChef/#recipe=To_HTML_Entity(false,'Named%20entities')&input=PGltZyBzcmM9eCBvbmVycm9yPSdhbGVydCgxKScvPg
