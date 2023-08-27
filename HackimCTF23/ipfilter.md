@@ -60,4 +60,11 @@ The function calculates the subnet and broadcast addresses based on the frontend
 If the debug_filter query parameter is set, it displays various IP-related information for debugging purposes.
 It checks if the provided IP falls below the subnet or goes above the broadcast address; if so, the IP is considered bad.
 It also checks if the provided IP matches the IP of the backend server, and if so, it's considered bad.
-+ 
+
+
++ http://52.59.124.14:10019/?fetch_backend=&debug_filter=&bip=127.0.0.1
+![image](https://github.com/Avanthikaanand/My-Writeups/assets/80388135/c983c854-6e3e-4c49-b7a9-2a251a6f5ad6)
+Here as we can see in Figure 1, we get the backend IP as 192.168.112.3. However if we directly try this IP in the bip field, the script IP-filtering won’t allow us.
+http://52.59.124.14:10019/?fetch_backend=&debug_filter=&bip=192.168.112.003
+we get the flag!
+
