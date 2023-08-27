@@ -68,3 +68,5 @@ Here as we can see in Figure 1, we get the backend IP as 192.168.112.3. However 
 http://52.59.124.14:10019/?fetch_backend=&debug_filter=&bip=192.168.112.003
 we get the flag!
 
+REference:
++ https://www.hacksparrow.com/networking/many-faces-of-ip-address.html
