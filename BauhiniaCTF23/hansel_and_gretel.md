@@ -68,6 +68,18 @@ def index():
 + When we go to /, it’ll set our session’s user to hansel & gretel, send a POST request to /load_bulletins route, and render the bulletins JSON data:
 + The load() method from class Board will first append the “Our First Adventure!” post, then append other new_content.
 + When we send a POST request to /save_bulletins, it’ll check the request’s header Content-Type is application/json or not. If it’s correct, call save() method with our request’s data from class Board.
-+ In the save() method, it’s basically validating the request’s JSON data matches the following format:
-+ 
 
++ Final payload to /flag
+```
+{"new_content": [{"title": "Test title","text": "Test text"}],
+    "__class__":{
+            "__init__":{
+              "__globals__":{
+               "session":{
+                "user":"witch"
+                }
+            }
+        }
+    }
+}
+```
