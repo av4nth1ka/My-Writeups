@@ -107,3 +107,7 @@ os.execute('cat /flag-*')
 
 
 
+## Reference:
++ https://gtfobins.github.io/gtfobins/nmap/#file-download
++ https://nmap.org/book/nse.html
++ https://nmap.org/nsedoc/scripts/http-fetch.html
