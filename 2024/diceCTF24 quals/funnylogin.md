@@ -1,0 +1,1 @@
+https://7rocky.github.io/en/ctf/other/dicectf/funnylogin/

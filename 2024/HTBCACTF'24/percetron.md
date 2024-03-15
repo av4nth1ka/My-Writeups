@@ -1,0 +1,1 @@
+writeup: https://trixterthetux.notion.site/HTB-Cyber-Apocalypse-2024-web-Percetron-07e517143f9f4753941efc24b72640e1#8f1220a0ed0848eb929e3608069c8c25

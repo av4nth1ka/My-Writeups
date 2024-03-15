@@ -1,0 +1,1 @@
+https://blog.shameerkashif.me/blog/2023/htb-cyber-apocalypse-ctf-2024-web-writeups/

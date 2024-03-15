@@ -1,0 +1,1 @@
+https://github.com/teamteamdev/ugractf-2024-quals/blob/master/tasks/worldwide/WRITEUP.md
